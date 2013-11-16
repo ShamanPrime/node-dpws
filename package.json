@@ -1,0 +1,19 @@
+{
+  "name": "dpws",
+  "version": "0.0.1",
+  "description": "DPWS Implementation",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ws-discovery": "*",
+    "restify": "~2.6.0",
+    "async": "~0.2.9",
+    "xmlbuilder": "~0.4.3",
+    "elementtree": "~0.1.5"
+  },
+  "author": "Dan Milon <i@danmilon.me>",
+  "license": "BSD-2-Clause",
+  "private": true
+}

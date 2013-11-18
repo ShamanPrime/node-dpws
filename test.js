@@ -4,8 +4,8 @@ var server = dpws.createServer({
   host: '192.168.1.2',
   device: {
     address: 'f7ef0fab-ba1d-4275-9a94-0f051090640f',
-    types: 'i2:AC_serviceInterface',
-    metadataVersion: '54325432',
+    types: '_PORT_TYPE_',
+    metadataVersion: Date.now().toString(),
     manufacturer: '_MANUFACTURER_',
     modelName: '_MODEL_NAME_',
     modelNumber: '_MODEL_NUMBER_',
@@ -17,15 +17,27 @@ var server = dpws.createServer({
   }
 })
 
-var service = server.createService('AC_Service')
+var service = server.createService('_SERVICE_ID_')
 
-var op = service.createOperation('GetStatus', {
+var temp = 0
+
+service.createOperation('GetStatus', {
   types: {
-    'temp': 'int'
+    't1': 'int'
   },
-  output: {
-    'temp': 'temp'
-  }
+  output: 't1'
+}, function (input, cb) {
+  setImmediate(cb.bind(null, null, temp))
+})
+
+service.createOperation('SetTemperature', {
+  types: {
+    't2': 'int'
+  },
+  input: 't2'
+}, function (input, cb) {
+  temp = parseInt(input, 10)
+  setImmediate(cb)
 })
 
 server.listen(8080, function (err) {

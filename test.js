@@ -17,39 +17,35 @@ var server = dpws.createServer({
   }
 })
 
-var service = server.createService('_SERVICE_ID_')
+var service = server.createService('_SERVICE_ID_', {
+  types: {
+    'temperature': 'int',
+    'complex': {
+      'arg1': 'int',
+      'arg2': 'string'
+    }
+  }
+})
 
 var temp = 0
 
 service.createOperation('GetStatus', {
-  types: {
-    't1': 'int'
-  },
-  output: 't1'
+  output: 'temperature'
 }, function (input, cb) {
   setImmediate(cb.bind(null, null, temp))
 })
 
 service.createOperation('SetTemperature', {
-  types: {
-    't2': 'int'
-  },
-  input: 't2'
+  input: 'temperature'
 }, function (input, cb) {
   temp = parseInt(input, 10)
   setImmediate(cb)
 })
 
+// TEST COMPLEX TYPE EVENT TOO
 var tempEvent = service.createOperation('TemperatureEvent', {
   event: true,
-  types: {
-    'complex': {
-      't1': 'int',
-      't2': 'int'
-    },
-    'simple': 'int'
-  },
-  output: 'simple'
+  output: 'temperature'
 })
 
 setInterval(function () {

@@ -40,6 +40,23 @@ service.createOperation('SetTemperature', {
   setImmediate(cb)
 })
 
+var tempEvent = service.createOperation('TemperatureEvent', {
+  event: true,
+  types: {
+    'complex': {
+      't1': 'int',
+      't2': 'int'
+    },
+    'simple': 'int'
+  },
+  output: 'simple'
+})
+
+setInterval(function () {
+  tempEvent.fire(temp.toString())
+  temp += 1
+}, 1000)
+
 server.listen(8080, function (err) {
   if (err) {
     throw err

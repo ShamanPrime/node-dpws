@@ -14,7 +14,8 @@
     "elementtree": "~0.1.5",
     "node-uuid": "~1.4.1",
     "request": "~2.27.0",
-    "moment": "~2.4.0"
+    "moment": "~2.4.0",
+    "bunyan": "~0.22.1"
   },
   "author": "Dan Milon <i@danmilon.me>",
   "license": "BSD-2-Clause",

@@ -1,6 +1,6 @@
 {
   "name": "dpws",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "DPWS Implementation",
   "main": "lib/index.js",
   "scripts": {
@@ -18,6 +18,5 @@
     "bunyan": "~0.22.1"
   },
   "author": "Dan Milon <i@danmilon.me>",
-  "license": "BSD-2-Clause",
-  "private": true
+  "license": "BSD-2-Clause"
 }
